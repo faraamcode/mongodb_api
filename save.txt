@@ -1,0 +1,14 @@
+// const mongoose =  require("mongoose")
+// mongoose.connect("mongodb+srv://faraamcode:Gbemisola1.@cluster0.gt8ey.mongodb.net/shop?retryWrites=true&w=majority", { useNewUrlParser: true }, (err, result)=>{
+//  if (err) {
+// console.log(err);  
+//  }else{
+//   console.log("connected");
+//  }
+// })
+// // .then((result)=>{
+// //  console.log("connected");
+// // })
+// // .catch((err)=>{
+// //  console.log(err);
+// // })

@@ -7,6 +7,7 @@ router.get("/logout", (req, res)=>{
  res.send('I want to logout');
 })
 router.get("/google", passport.authenticate("google",{
+ 
  scope: ['profile']
 }))
 router.get("/google/redirect", passport.authenticate("google"), (req, res)=>{

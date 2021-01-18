@@ -1,11 +1,25 @@
 const passport = require("passport");
+const User = require("./datadb")
+const clientDetails = require("../document/sceret")
 const GoogleStrategy = require("passport-google-oauth20")
 passport.use(
  new GoogleStrategy({ 
  callbackURL : "/oauth/google/redirect",
- clientID : "753547988129-ssupmga7t4r5cmcknmoq5jcnum3j1d0o.apps.googleusercontent.com",
- clientSecret : "9isjQ6kELzVvAOGvYqYufIw6"
- }, (accessToken, refreshToken, profile, done)=>{
-   console.log(profile);
+ clientID : clientDetails.passport.clientid,
+ clientSecret : clientDetails.passport.clientsecret
+  }, (accessToken, refreshToken, profile, done)=>{
+   User.findOne({googleid : profile.id}).then((currentUser)=>{
+     if (currentUser) {
+       console.log("user already ", currentUser);
+     }else{
+
+       new User({
+        username : profile.displayName,
+        googleid: profile.id
+       }).save().then((newUser)=>{
+        console.log("new user created" + newUser);
+       })
+     }
+   })
  })
 );

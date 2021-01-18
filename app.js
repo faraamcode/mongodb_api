@@ -2,6 +2,7 @@ const express = require("express");
 const app = express(); 
 const passportSetup = require("./config/passport")
 const oauthRouter = require("./route/authRoute");
+const mongooseSetup = require("./config/db")
 app.set("view engine", "ejs")
 app.use("/oauth", oauthRouter)
 app.get("/", (req, res)=>{
